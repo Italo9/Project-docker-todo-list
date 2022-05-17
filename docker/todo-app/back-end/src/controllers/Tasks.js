@@ -47,7 +47,6 @@ const resetTasks = (_req, res) => taskModel
       console.error(error);
       res.status(500).end()
     });
-    //commit
 
 module.exports = {
   getAllTasks,
