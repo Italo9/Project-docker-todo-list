@@ -2,7 +2,6 @@ version: '3'
 
 services:
   todotests:
-    # image: mjgargani/puppeteer:trybe1.0
     build: ./todo-app/tests
     environment:
       - FRONT_HOST=todofront  
@@ -11,13 +10,11 @@ services:
       - "todoback"      
 
   todoback:
-    # image: node:14-alpine
     build: ./todo-app/back-end
     ports:
       - "3001:3001"
 
   todofront:
-    # image: node:14-alpine
     build: ./todo-app/front-end
     environment:
       - REACT_APP_API_HOST=todoback
