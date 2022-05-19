@@ -1,6 +1,6 @@
 FROM node:14-alpine AS todobackend
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json ./app
 ADD /node_modules.tar.gz .
 RUN npm install
 COPY . .

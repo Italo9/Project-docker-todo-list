@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  todotests:
+    # image: mjgargani/puppeteer:trybe1.0
+    build: ./todo-app/tests
+    environment:
+      - FRONT_HOST=todofront  
+    depends_on:
+      - "todofront"
+      - "todoback"      
+
+  todoback:
+    # image: node:14-alpine
+    build: ./todo-app/back-end
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - TZ=America/Sao_Paulo # time zone
+
+  todofront:
+    # image: node:14-alpine
+    build: ./todo-app/front-end
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_HOST=todoback
+      - TZ=America/Sao_Paulo # time zone  
+    depends_on:
+      - "todoback"
